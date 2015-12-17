@@ -1,0 +1,38 @@
+﻿-- DWU100 First time on CCI table 11 seconds
+-- DWU100 Second time on CCI table 6 seconds
+-- DWU100 Third time on CCI table 6 seconds
+
+-- DWU1000 First time on CCI table 3 seconds
+-- DWU1000 Second time on CCI table 3 seconds
+-- DWU1000 Third time on CCI table 2 seconds
+
+
+-- DWU100 First time on external table 58 seconds
+-- DWU100 Second time on external table 53 seconds
+-- DWU100 Third time on external table 52 seconds
+
+-- DWU1000 First time on external table 55 seconds
+-- DWU1000 Second time on external table 53 seconds
+-- DWU1000 Third time on external table 54 seconds
+
+select
+	l_returnflag,
+	l_linestatus,
+	sum(l_quantity) as sum_qty,
+	sum(l_extendedprice) as sum_base_price,
+	sum(l_extendedprice*(1-l_discount)) as sum_disc_price,
+	sum(l_extendedprice*(1-l_discount)*(1+l_tax)) as sum_charge,
+	avg(l_quantity) as avg_qty,
+	avg(l_extendedprice) as avg_price,
+	avg(l_discount) as avg_disc,
+	count(*) as count_order
+from
+	dbo.lineitem
+where
+	l_shipdate <= Dateadd(day, -90, '1998-12-01') -- interval '[DELTA]' day (3)
+group by
+	l_returnflag,
+	l_linestatus
+order by
+	l_returnflag,
+	l_linestatus;

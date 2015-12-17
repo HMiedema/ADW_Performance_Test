@@ -1,0 +1,47 @@
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[ext].[NATION]') AND type in (N'U'))
+BEGIN
+DROP EXTERNAL TABLE [ext].[NATION]
+END
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'ext.REGION') AND type in (N'U'))
+BEGIN
+DROP EXTERNAL TABLE ext.REGION
+END
+
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'ext.PART') AND type in (N'U'))
+BEGIN
+DROP EXTERNAL TABLE ext.PART
+END
+
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'ext.PARTSUPP') AND type in (N'U'))
+BEGIN
+DROP EXTERNAL TABLE ext.PARTSUPP
+END
+
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'ext.CUSTOMER') AND type in (N'U'))
+BEGIN
+DROP EXTERNAL TABLE ext.CUSTOMER
+END
+
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'ext.ORDERS') AND type in (N'U'))
+BEGIN
+DROP EXTERNAL TABLE ext.ORDERS
+END
+
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'ext.LINEITEM') AND type in (N'U'))
+BEGIN
+DROP EXTERNAL TABLE ext.LINEITEM
+END
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'ext.SUPPLIER') AND type in (N'U'))
+BEGIN
+DROP EXTERNAL TABLE ext.SUPPLIER
+END
+
+
+
